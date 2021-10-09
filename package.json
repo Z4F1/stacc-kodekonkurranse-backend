@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "nodemon app",
-    "start": "node app"
+    "start": "node app",
+    "ssl": "node app.ssl.js"
   },
   "author": "Pelle Pastoor",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
+    "https": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
     "morgan": "^1.10.0",
