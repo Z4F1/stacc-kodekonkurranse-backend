@@ -27,6 +27,17 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
+router.post("/", async (req, res, next) => {
+    try {
+        const userEntry = new UserModel(req.body)
+        const createdEntry = await userEntry.save()
+
+        res.json(createdEntry)
+    } catch (error) {
+        next(error)
+    }
+})
+
 router.use(Auth.NeedsAuthorization)
 
 router.get("/", async (req, res, next) => {
@@ -44,18 +55,9 @@ router.put("/", async (req, res, next) => {
 
         if (!userEntry) throw new Error("Token is invalid")
 
+        console.log(userEntry)
+
         res.json(userEntry)        
-    } catch (error) {
-        next(error)
-    }
-})
-
-router.post("/", async (req, res, next) => {
-    try {
-        const userEntry = new UserModel(req.body)
-        const createdEntry = await userEntry.save()
-
-        res.json(createdEntry)
     } catch (error) {
         next(error)
     }

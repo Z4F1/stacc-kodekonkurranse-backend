@@ -3,6 +3,10 @@ const mongoose = require("mongoose")
 const { Schema } = mongoose
 
 const bidSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     contract_address: {
         type: String,
         required: true

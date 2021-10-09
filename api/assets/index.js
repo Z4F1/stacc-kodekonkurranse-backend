@@ -32,7 +32,9 @@ router.get("/:address/id/:id", async (req, res, next) => {
         const data = await (await fetch("https://api.opensea.io/api/v1/asset/" + req.params.address + "/" + req.params.id)).json()
 
         if(data.success == false){
-            //
+            // Delete all bids with that address and id
+            const removed = await BidModel.deleteMany({ contract_address: req.params.address, token_id: req.params.id.toString()})
+            console.log(removed)
         }
         res.json(data)
     } catch (error) {
