@@ -1,8 +1,19 @@
+const fetch = require("node-fetch")
 const router = require("express").Router()
 
 const Auth = require("../auth")
 
 const UserModel = require("./UserModel")
+
+router.get("/test", async (req, res, next) => {
+    try {
+        const data = await (await fetch("http://api.plos.org/search?q=title:DNA")).json()
+
+        res.json(data)
+    } catch (error) {
+        next(error)
+    }
+})
 
 router.post("/login", async (req, res, next) => {
     try {
