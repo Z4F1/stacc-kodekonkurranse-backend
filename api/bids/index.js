@@ -19,9 +19,6 @@ router.get("/", async (req, res, next) => {
 router.get("/:contract_address/id/:token_id", async (req, res, next) => {
     try {
         const bids = await BidModel.find(req.params)
-        
-        console.log(req.params)
-        console.log(bids)
 
         res.json(bids)
     } catch (error) {
